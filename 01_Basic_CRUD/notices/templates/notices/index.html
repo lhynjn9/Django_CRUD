@@ -1,0 +1,20 @@
+<!-- 템플릿 상속-->
+{% extends 'base.html' %}
+
+<!-- Read : 전체 게시글 조회 -->
+{% block content %}
+  <h1 class = "text-center"> Notice Index Page</h1>
+  <hr>
+  <!-- Create : 게시글 생성 버튼-->
+  <a href="{% url 'notices:new' %}">New</a>
+  <hr>
+  {% for notice in  notices %}
+    <p>번호 : {{ notice.pk }}</p>
+    <p>제목 : {{ notice.title }}</p>
+    <p>내용 : {{ notice.content }}</p>
+    <!-- Read : 개별 게시글 조회 버튼-->
+    <a href="{% url 'notices:detail' notice.pk %}">[detail]</a>
+    <hr>
+  {% endfor %}
+{% endblock content %}
+
