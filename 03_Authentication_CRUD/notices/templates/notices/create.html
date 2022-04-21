@@ -1,0 +1,21 @@
+<!-- 템플릿 상속 -->
+{% extends 'base.html' %}
+
+<!-- Create : 게시글 생성 -->
+{% block content %}
+  <h1 class = "text-center"> Notice Create Page</h1>
+  <hr>
+  <!-- 입력 받은 데이터를 create로 전달 -->
+  <form action="{% url 'notices:create' %}" method="POST">
+    <!-- csrf 공격 방어 -->
+    {% csrf_token %}
+    <!-- form을 이용한 출력-->
+    <!-- as_p : 각 필드가 <p>태그로 감싸져서 렌더링 됨-->
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <!-- Read : 전체 게시글 조회 페이지 이동 버튼 -->
+  <a href="{% url 'notices:index' %}">[back]</a>
+{% endblock content %}
+

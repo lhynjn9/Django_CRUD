@@ -1,0 +1,26 @@
+<!-- 템플릿 상속-->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class = "text-center">Notice Index Page</h1>
+  <hr>
+  <!--로그인한 사용자만 글 작성이 가능해야 함-->
+  {% if request.user.is_authenticated %}
+    <!-- Create : 게시글 생성 버튼-->
+    <a href="{% url 'notices:create' %}">Create</a>
+  <!--로그인 하지 않은 사용자는 로그인을 하고 와야 함-->
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[새 글 작성을 위해서는 로그인을 하고 와야 합니다.]</a>
+  {% endif %}
+  <hr>
+  <!-- Read : 전체 게시글 조회 -->  
+  {% for notice in  notices %}
+    <p>번호 : {{ notice.pk }}</p>
+    <p>제목 : {{ notice.title }}</p>
+    <p>내용 : {{ notice.content }}</p>
+    <!-- Read : 개별 게시글 조회 버튼-->
+    <a href="{% url 'notices:detail' notice.pk %}">[detail]</a>
+    <hr>
+  {% endfor %}
+{% endblock content %}
+
