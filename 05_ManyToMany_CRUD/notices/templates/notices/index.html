@@ -1,0 +1,42 @@
+<!-- 템플릿 상속-->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class = "text-center">Notice Index Page</h1>
+  <hr>
+  <!--로그인한 사용자만 글 작성이 가능해야 함-->
+  {% if request.user.is_authenticated %}
+    <!-- Create : 게시글 생성 버튼-->
+    <a href="{% url 'notices:create' %}">Create</a>
+  <!--로그인 하지 않은 사용자는 로그인을 하고 와야 함-->
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[새 글 작성을 위해서는 로그인을 하고 와야 합니다.]</a>
+  {% endif %}
+  <hr>
+  <!-- Read : 전체 게시글 조회 -->  
+  {% for notice in  notices %}
+    <p>작성자:  <a href="{% url 'accounts:profile' notice.user.username %}">{{ notice.user }}</a></p>
+    <p>번호 : {{ notice.pk }}</p>
+    <p>제목 : {{ notice.title }}</p>
+    <p>내용 : {{ notice.content }}</p>
+    <p>좋아요 수 : {{ notice.like_users.count }} </p>
+    <!-- 좋아요 출력 -->
+    <div>
+      <form action="{% url 'notices:likes' notice.pk %}" method="POST">  
+        {% csrf_token %}
+        <!-- 좋아요를 선택한 경우-->
+        {% if user in notice.like_users.all %}
+          <button class="btn"><i class="fas fa-heart" style="color:crimson;"></i></button>
+        <!-- 좋아요를 선택하지 않은 경우-->
+          {% else %}
+          <button class="btn"><i class="fas fa-heart" style="color:black;"></i></button>
+        {% endif %}
+      </form>
+    </div>
+
+    <!-- Read : 개별 게시글 조회 버튼-->
+    <a href="{% url 'notices:detail' notice.pk %}">[detail]</a>
+    <hr>
+  {% endfor %}
+{% endblock content %}
+

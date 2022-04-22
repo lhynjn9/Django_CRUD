@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ person.username }}님의 프로필</h1>
+
+<!-- with : 범위 내에서 별칭 사용 -->
+{% with followers=person.followers.all followings=person.followings.all %}
+  <div>
+    팔로워 : {{ followers|length }} / 팔로우 : {{ followings|length }}
+  </div>
+
+  <div>
+    {% if user != person %}
+      <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+        {% csrf_token %}
+        {% if user in followers %}
+          <input type="submit" value="언팔로우">
+        {% else %}
+          <input type="submit" value="팔로우">
+        {% endif %}
+      </form>
+    {% endif %}
+  </div>
+{% endwith %}
+
+<hr>
+
+<!-- 현재 사용자의 게시글 목록 -->
+<h2>{{ person.username }}이 작성한 게시글</h2>
+<!-- 현재 사용자가 작성한 게시글 역참조 -->
+{% for notice in person.notice_set.all %}
+  <p>{{ notice.title }}</p>
+{% endfor %}
+
+<hr>
+
+<!-- 현재 사용자가 작성한 댓글 목록 -->
+<h2>{{ person.username }}이 작성한 댓글</h2>
+<!-- 현재 사용자가 작성한 댓글 역참조 -->
+{% for comment in person.comment_set.all %}
+  <p>{{ comment.content }}</p>
+{% endfor %}
+
+<hr>
+
+{% comment %} 이 사람이 좋아요를 누른 게시글 목록 {% endcomment %}
+<h2>{{ person.username }}이 좋아요를 누른 게시글</h2>
+<!-- 현재 사용자가 좋아요한 게시글 역참조 -->
+{% for notice in person.like_notices.all %}
+  <p>{{ notice.title }}</p>
+{% endfor %}
+<hr>
+
+<a href="{% url 'notices:index' %}">[back]</a>
+
+{% endblock content %}

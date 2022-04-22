@@ -1,0 +1,66 @@
+<!-- 템플릿 상속-->
+{% extends 'base.html' %}
+
+<!-- Read : 개별 게시글 조회 -->
+{% block content %}
+  <h1>Notice Detail Page</h1><hr>
+  <h3>{{ notice.pk }}번째 글</h3>
+  <hr>
+  <p>제목 : {{ notice.title }}</p>
+  <p>내용 : {{ notice.content }}</p>
+  <p>작성 시각 : {{ notice.created_at }}</p>
+  <p>수정 시각 : {{ notice.updated_at }}</p>
+  <hr>
+  <!-- 작성자만 수정 및 삭제--> 
+  {% if user == notice.user %}
+    <!-- Update : 게시글 수정 페이지 이동 버튼 -->
+    <a href="{% url 'notices:update' notice.pk %}" class="btn btn-primary">[Edit]</a>
+
+    <!-- Delete : 삭제 버튼 -->
+    <!-- 입력 받은 데이터를 delete로 전달 -->
+    <form action="{% url 'notices:delete' notice.pk %}" method="POST">
+      <!-- csrf 공격 방어 -->
+      {% csrf_token %}
+      <button class="btn btn-danger">[Delete]</button>
+    </form>
+  {% endif %}
+
+
+  <!-- Read : 전체 게시글 조회 페이지 이동 버튼 -->
+  <a href="{% url 'notices:index' %}">[back]</a><hr>
+
+  <!-- 댓글 개수 출력-->
+  {% if comments %}
+    <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
+  {% endif %}
+  <!-- 댓글 목록 출력-->
+  <ul>
+    {% for comment in  comments %}
+      <li>
+        <!--댓글 작성자 포함 출력-->
+        {{ comment.user}} - {{ comment.content }}
+        <!--삭제 요청 유저와 댓글 작성자가 같아야만 삭제버튼을 보여줘-->
+        {% if  request.user == comment.user%}
+          <form action="{% url 'notices:comment_delete' notice.pk comment.pk %}" method = "POST">
+            {% csrf_token %}
+            <input type="submit" value = "삭제">
+          </form>
+        {% endif %}
+      </li>
+    <!-- 댓글이 없는 경우 -->
+    {% empty %}
+    <p><b>댓글 없음</b></p>
+    {% endfor %}
+  </ul>
+
+  {% if  request.user.is_authenticated %}
+    <!--댓글 입력 부분 : 로그인한 사용자만 접근 가능함-->
+    <form action="{% url 'notices:comment_create' notice.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form }}
+      <input type="submit">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[댓글작성하려면 로그인하세요]</a>
+  {% endif %}
+{% endblock content %}
