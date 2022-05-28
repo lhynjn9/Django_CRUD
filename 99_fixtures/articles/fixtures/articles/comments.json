@@ -1,0 +1,112 @@
+[
+{
+    "model": "articles.comment",
+    "pk": 1,
+    "fields": {
+        "article": 8,
+        "user": 8,
+        "content": "Development live really accept practice concern lawyer. Really section chair trade to blue.\nFloor never have simply young. Lay make rich not.",
+        "created_at": "1997-06-01T21:48:19Z",
+        "updated_at": "2005-02-25T13:22:21Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 2,
+    "fields": {
+        "article": 6,
+        "user": 2,
+        "content": "Order member report list. Now blood method what me.\nReduce modern easy turn really fear job. Strategy source sound receive of rather machine. Space among team population stop remain maintain.",
+        "created_at": "1993-05-23T17:12:46Z",
+        "updated_at": "2007-06-17T21:56:51Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 3,
+    "fields": {
+        "article": 6,
+        "user": 5,
+        "content": "Get huge positive material. Wrong why not back. Answer against oil resource hard. Fly decade collection trade occur foreign.",
+        "created_at": "2000-02-11T06:57:15Z",
+        "updated_at": "2000-07-16T01:40:36Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 4,
+    "fields": {
+        "article": 5,
+        "user": 6,
+        "content": "Determine nor eat hospital. Know process fish base herself candidate possible her.\nMuch put per bring. Trade despite if station social size voice. Couple involve someone wind nearly.",
+        "created_at": "2007-11-20T05:14:13Z",
+        "updated_at": "2016-06-29T03:30:25Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 5,
+    "fields": {
+        "article": 9,
+        "user": 8,
+        "content": "Daughter special drug. Control involve sort scene true charge. Among many total push trouble eye pick.\nSingle movement our listen offer light. Church stand popular.",
+        "created_at": "1971-06-18T03:26:38Z",
+        "updated_at": "2009-02-10T14:34:25Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 6,
+    "fields": {
+        "article": 9,
+        "user": 1,
+        "content": "Similar me when five another away. Travel ever customer.\nFriend camera analysis garden red bank watch. Before together strong yes window so.",
+        "created_at": "1997-03-19T21:43:17Z",
+        "updated_at": "1984-07-29T10:22:16Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 7,
+    "fields": {
+        "article": 5,
+        "user": 9,
+        "content": "Southern security decide before southern imagine with. Center wall seat have best believe would.\nHis interest we conference. Either leg culture economic.",
+        "created_at": "1986-07-25T02:25:18Z",
+        "updated_at": "2007-12-25T01:55:52Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 8,
+    "fields": {
+        "article": 10,
+        "user": 1,
+        "content": "Read financial difficult successful green every once. Away director billion down large nearly reality skin. For late may who.\nEffort toward save turn. Design forget law example.",
+        "created_at": "1992-05-20T04:42:58Z",
+        "updated_at": "1979-04-22T15:11:30Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 9,
+    "fields": {
+        "article": 9,
+        "user": 2,
+        "content": "Personal story win pressure get simply. Nothing allow situation follow.\nInto her at he south up. Her public despite. Five continue future mission.",
+        "created_at": "1973-04-24T13:57:22Z",
+        "updated_at": "1970-11-10T17:33:53Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 10,
+    "fields": {
+        "article": 8,
+        "user": 4,
+        "content": "Range method agent actually. Product room prove. Decision since beat.\nSame professor security so. Speech notice economy none skill. Film low new.",
+        "created_at": "1975-01-29T05:29:37Z",
+        "updated_at": "1989-10-18T02:37:34Z"
+    }
+}
+]
