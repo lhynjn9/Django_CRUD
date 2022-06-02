@@ -23,7 +23,7 @@ urlpatterns = [
     path('comments/', views.comment_list), # 전체 댓글 조회 url
     path('comments/<int:comment_pk>/', views.comment_detail), # 댓글 조회, 삭제, 수정 url
     path('cards/', views.card_list), # 카드 조회 url
-    path('cards/<int:card_pk>/', views.card_detail), # 개별 카드 조회 url
+    path('cards/<int:card_pk>/', views.card_detail), # 개별 카드 조회url
     path('<int:card_pk>/register/<int:article_pk>/', views.register),
     path('swagger/', schema_view.with_ui('swagger')),
     ]
