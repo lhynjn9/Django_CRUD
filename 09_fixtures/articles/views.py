@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods, require_POST, req
 from .models import Article, Comment
 from .forms import ArticleForm, CommentForm
 
-# Create your views here.
+
 @require_safe
 def index(request):
     articles = Article.objects.order_by('-pk')
